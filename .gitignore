@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Data and generated outputs can be large or machine-specific.
+data/
+outputs/
+*.nc
+*.png
+*.csv
+*.json
+
+# Keep notebooks, but avoid notebook autosaves/checkpoints.
+.ipynb_checkpoints/

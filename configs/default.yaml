@@ -1,0 +1,26 @@
+study:
+  start_month: "1961-01"
+  end_month: "2024-12"
+  reference_start: "1961-01-31"
+  reference_end: "1990-12-31"
+
+paths:
+  # Update this path for your machine. It should contain the component NetCDF files.
+  components_dir: "ACI-Python/data/composites"
+  output_dir: "outputs"
+
+components:
+  precipitation: "precipitation_index.nc"
+  t90: "t90_index.nc"
+  t10: "t10_index.nc"
+  drought: "drought_index.nc"
+  wind: "wind_index.nc"
+  sealevel: "sealevel_index.nc"
+
+weights:
+  sealevel: 1.0
+
+options:
+  drought_is_spi: false
+  make_decadal_png: true
+  require_no_missing: true

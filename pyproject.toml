@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "baci-climate-index"
+version = "0.1.0"
+description = "Belgian Actuarial Climate Index calibration from open climate data."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Coralie Roland" }
+]
+dependencies = [
+  "matplotlib>=3.8",
+  "netCDF4>=1.6",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "PyYAML>=6.0",
+  "scipy>=1.10",
+  "xarray>=2024.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+baci = "baci_climate_index.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
