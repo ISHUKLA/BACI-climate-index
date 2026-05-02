@@ -6,10 +6,10 @@ The final results are taken from the Keynote deck:
 Actuarial index calibration - Open source Belgian data.key
 ```
 
-The source notebook that best matches those results is:
+The source notebook preserved for those results is:
 
 ```text
-index_VF (5).ipynb
+notebooks/final-index-build.ipynb
 ```
 
 ## BACI Summary

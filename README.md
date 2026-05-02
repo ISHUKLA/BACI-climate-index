@@ -100,5 +100,5 @@ sealevel_index.nc
 
 ## Provenance
 
-The final results correspond to `index_VF (5).ipynb` and the Keynote deck
-`Actuarial index calibration - Open source Belgian data.key`.
+The final results correspond to `notebooks/final-index-build.ipynb` and the
+Keynote deck `Actuarial index calibration - Open source Belgian data.key`.
