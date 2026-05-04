@@ -5,7 +5,7 @@ Keep exploratory notebooks here for transparency and provenance.
 Recommended convention:
 
 ```text
-notebooks/final-index-build.ipynb
+notebooks/index_VF.ipynb
 notebooks/archive/
 ```
 

@@ -9,7 +9,7 @@ Actuarial index calibration - Open source Belgian data.key
 The source notebook preserved for those results is:
 
 ```text
-notebooks/final-index-build.ipynb
+notebooks/index_VF.ipynb
 ```
 
 ## BACI Summary
