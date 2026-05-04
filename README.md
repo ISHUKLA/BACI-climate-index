@@ -10,7 +10,7 @@ builds the BACI composite, and writes final outputs.
 
 ## Final BACI formula
 
-The final composite is:
+The current public methodology uses five retained components:
 
 ```text
 BACI = (t90 - t10 + precipitation + wind + 0.35 * sealevel) / 5
@@ -22,11 +22,35 @@ composite after validation showed limited explanatory contribution for Belgium.
 The sea-level component is weighted by `fS = 0.35` to reflect the limited coastal
 exposure in the national index.
 
+## Current methodology
+
+The BACI pipeline follows the ACI/FACI logic of converting heterogeneous climate
+signals into comparable z-score anomalies, then aggregating them into a single
+transparent index.
+
+| Component | Included in final BACI | Treatment |
+| --- | --- | --- |
+| T90, hot extremes | Yes | Added to the composite. |
+| T10, cold extremes | Yes | Subtracted so that fewer cold extremes increase the climate-risk signal. |
+| Extreme precipitation | Yes | Added to the composite. |
+| Wind | Yes | Added to the composite. |
+| Sea level | Yes | Added with geographic weight `fS = 0.35`. |
+| Drought | No | Kept for diagnostics/provenance, excluded from the final composite. |
+
+The final denominator is fixed at `5`, matching the five retained BACI
+dimensions. The sea-level term is weighted inside the numerator rather than by
+renormalising the denominator.
+
 ## Result sanity check
 
 The CLI writes a compact reproducibility fingerprint to
 `outputs/BACI_fingerprint.json` when the composite is rebuilt. Regenerate this
 fingerprint after any methodology, weighting, or input-data change.
+
+The historical summary values in `docs/final_results.md` are preserved as
+provenance for the earlier six-component calibration and should not be treated
+as final publication values until the composite has been regenerated under the
+current five-component methodology.
 
 ## Repository layout
 
@@ -163,8 +187,10 @@ sealevel_index.nc
 
 ## Provenance
 
-The final results correspond to `notebooks/index_VF.ipynb` and the Keynote deck
-`Actuarial index calibration - Open source Belgian data.key`.
+The exploratory notebooks are retained for provenance. The current methodology
+is aligned with the presentation update in `Soutenance CNAM_0109 .pptx`: wind is
+included, drought is excluded from the final BACI, sea level uses `fS = 0.35`,
+and the denominator remains `5`.
 
 ## Citation and reuse
 
