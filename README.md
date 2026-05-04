@@ -82,6 +82,68 @@ Primary data sources:
 - Permanent Service for Mean Sea Level data:
   https://psmsl.org/data/obtaining/
 
+### Extracted Data Description
+
+**Data Sources**
+
+ERA5-Land, from Copernicus, provides climate reanalysis data at a spatial
+resolution around 0.1 degrees, approximately 11 km.
+
+PSMSL, the Permanent Service for Mean Sea Level, provides tide-gauge sea-level
+data from three Belgian coastal stations:
+
+- Nieuwpoort
+- Oostende
+- Zeebrugge
+
+**Period**
+
+The slides mention a long homogeneous period from around 1961-2023. Elsewhere
+in the project pipeline and results, the analysis period is 1961-2024. The
+reference and normalisation period is 1961-1990.
+
+**Coverage**
+
+ERA5-Land covers the Belgian territory with around 250 grid cells. A geographic
+Belgian mask is applied to exclude grid cells outside Belgium.
+
+**Variables Used**
+
+The data are used to derive climate components for:
+
+- precipitation
+- temperature extremes
+- drought
+- wind
+- sea level
+
+**Data Quality**
+
+ERA5-Land is described as a reference climate reanalysis from ECMWF, combining
+observations and physical models. PSMSL is described as an internationally
+validated sea-level database. The slides emphasize long, homogeneous time
+series.
+
+**Cleaning and Harmonisation**
+
+The cleaning workflow applies a geographic mask so cells outside Belgium are
+removed. Missing sea-level data are handled using an inter-station average
+across the PSMSL stations. ERA5-Land gaps/interpolation are mentioned in the
+slide extraction, although the extracted text is partially fragmented. All
+variables are converted to comparable z-scores relative to 1961-1990.
+
+**Limitations**
+
+ERA5-Land resolution of 0.1 degrees, or approximately 11 km, may be coarse for
+a compact country like Belgium. Local gradients may be smoothed, especially:
+
+- urban effects
+- coastal effects
+- relief/topography
+
+Reliable historical series start around 1961. Updates depend on data
+publication schedules from Copernicus and PSMSL.
+
 Expected component files:
 
 ```text
