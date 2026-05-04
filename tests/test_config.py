@@ -17,11 +17,12 @@ def test_parse_config_resolves_relative_paths(tmp_path) -> None:
                 "output_dir": "outputs",
             },
             "components": {"precipitation": "precipitation_index.nc"},
-            "weights": {"sealevel": 1.0},
-            "options": {"drought_is_spi": False},
+            "weights": {"sealevel": 0.35},
+            "options": {},
         },
         base_dir=tmp_path,
     )
 
     assert config.paths.components_dir == tmp_path / "data" / "composites"
     assert config.paths.output_dir == tmp_path / "outputs"
+    assert config.sealevel_weight == 0.35

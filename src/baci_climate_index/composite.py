@@ -8,13 +8,13 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-COMPONENT_ORDER = ("precipitation", "t90", "t10", "drought", "wind", "sealevel")
+COMPONENT_ORDER = ("precipitation", "t90", "t10", "wind", "sealevel")
 
 
 def build_baci(
     components: pd.DataFrame,
     *,
-    sealevel_weight: float = 1.0,
+    sealevel_weight: float = 0.35,
 ) -> pd.Series:
     """Build the BACI composite from aligned component series."""
     missing_columns = sorted(set(COMPONENT_ORDER) - set(components.columns))
@@ -25,20 +25,11 @@ def build_baci(
         components["t90"]
         - components["t10"]
         + components["precipitation"]
-        + components["drought"]
-        + sealevel_weight * components["sealevel"]
         + components["wind"]
-    ) / 6.0
+        + sealevel_weight * components["sealevel"]
+    ) / 5.0
     baci.name = "BACI"
     return baci
-
-
-def orient_drought(components: pd.DataFrame, *, drought_is_spi: bool) -> pd.DataFrame:
-    """Flip drought if the source is SPI-like and positive values mean wet."""
-    oriented = components.copy()
-    if drought_is_spi:
-        oriented["drought"] = -oriented["drought"]
-    return oriented
 
 
 def require_complete_components(components: pd.DataFrame) -> None:
@@ -92,7 +83,7 @@ def sealevel_weight_sensitivity(
     components: pd.DataFrame,
     *,
     weights: np.ndarray | None = None,
-    base_weight: float = 1.0,
+    base_weight: float = 0.35,
 ) -> pd.DataFrame:
     """Evaluate how BACI changes under alternative sea-level weights."""
     weights = weights if weights is not None else np.arange(0.0, 2.01, 0.25)

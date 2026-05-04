@@ -22,14 +22,9 @@ Before making the repository public:
    baci build-composite --config configs/default.yaml
    ```
 
-6. Compare the generated fingerprint with the final reference:
-
-   ```text
-   mean: 0.27409226621375793
-   std:  0.5843940951495518
-   head: [-0.036153, 0.834808, 0.339282]
-   tail: [0.582361, 0.6512, 0.54511]
-   ```
+6. Record the generated fingerprint from `outputs/BACI_fingerprint.json` in the
+   release notes. Regenerate it whenever the methodology, weights, or input
+   data change.
 
 7. Add a license before publication if you want others to reuse the code.
 8. Confirm that `CITATION.cff` renders correctly on GitHub.

@@ -22,7 +22,7 @@ era5_land_YYYY_MM.grib
 ```
 
 These files are derived from ERA5-Land and are used upstream to derive the
-precipitation, temperature, drought, and wind component indices.
+precipitation, temperature, drought diagnostic, and wind component indices.
 
 ## PSMSL Usage
 
@@ -66,9 +66,11 @@ The data are used to derive climate components for:
 
 - precipitation
 - temperature extremes
-- drought
 - wind
 - sea level
+
+Drought is analysed diagnostically but excluded from the final BACI composite
+because the validation showed limited marginal contribution for Belgium.
 
 ### Data Quality
 
@@ -109,7 +111,6 @@ The composite builder expects these generated NetCDF component files:
 precipitation_index.nc
 t90_index.nc
 t10_index.nc
-drought_index.nc
 wind_index.nc
 sealevel_index.nc
 ```

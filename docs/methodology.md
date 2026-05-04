@@ -17,14 +17,14 @@ off-by-one month shifts when mixing pandas and xarray outputs.
 The final BACI formula uses:
 
 ```text
-t90 - t10 + precipitation + drought + sealevel + wind
+BACI = (t90 - t10 + precipitation + wind + 0.35 * sealevel) / 5
 ```
 
 The `t10` term is subtracted so that decreasing cold-tail values contribute to
-an increasing climate-risk signal. The final drought component is already
-oriented so that higher values represent drier conditions. If using an SPI-like
-drought input where positive means wetter, set `drought_is_spi: true` in the
-configuration to flip the sign.
+an increasing climate-risk signal. Wind remains included in the final composite.
+Drought is excluded from the final BACI after validation showed weak marginal
+contribution in Belgium. Sea level is multiplied by `fS = 0.35` to avoid
+overweighting a geographically limited coastal exposure.
 
 ## Missing Values
 

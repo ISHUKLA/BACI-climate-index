@@ -31,7 +31,6 @@ class PathConfig:
 class OptionsConfig:
     """Runtime switches for BACI construction."""
 
-    drought_is_spi: bool = False
     make_decadal_png: bool = True
     require_no_missing: bool = True
 
@@ -85,9 +84,8 @@ def parse_config(raw: dict[str, Any], base_dir: Path | None = None) -> BaciConfi
         ),
         paths=PathConfig(components_dir=components_dir, output_dir=output_dir),
         components=dict(raw["components"]),
-        sealevel_weight=float(weights_raw.get("sealevel", 1.0)),
+        sealevel_weight=float(weights_raw.get("sealevel", 0.35)),
         options=OptionsConfig(
-            drought_is_spi=bool(options_raw.get("drought_is_spi", False)),
             make_decadal_png=bool(options_raw.get("make_decadal_png", True)),
             require_no_missing=bool(options_raw.get("require_no_missing", True)),
         ),

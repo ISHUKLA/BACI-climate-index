@@ -12,7 +12,6 @@ from baci_climate_index.composite import (
     build_baci,
     component_correlations,
     decadal_means,
-    orient_drought,
     reference_summary,
     require_complete_components,
     sealevel_weight_sensitivity,
@@ -51,13 +50,6 @@ def _build_composite(config_path: Path) -> int:
     full_index = monthly_index(config.study.start_month, config.study.end_month)
 
     components = load_components(config.component_paths, full_index=full_index)
-    components = orient_drought(components, drought_is_spi=config.options.drought_is_spi)
-
-    corr_pd = components[["precipitation", "drought"]].dropna().corr().iloc[0, 1]
-    print(
-        "Precipitation-drought correlation after orientation: "
-        f"{corr_pd:.3f} (expected negative if drought means drier-positive)."
-    )
 
     if config.options.require_no_missing:
         require_complete_components(components)

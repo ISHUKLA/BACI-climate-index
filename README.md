@@ -13,23 +13,20 @@ builds the BACI composite, and writes final outputs.
 The final composite is:
 
 ```text
-BACI = (t90 - t10 + precipitation + drought + sealevel + wind) / 6
+BACI = (t90 - t10 + precipitation + wind + 0.35 * sealevel) / 5
 ```
 
-where all six inputs are standardised monthly component indices over the
-1961-1990 reference period.
+where all five retained inputs are standardised monthly component indices over
+the 1961-1990 reference period. The drought component is excluded from the final
+composite after validation showed limited explanatory contribution for Belgium.
+The sea-level component is weighted by `fS = 0.35` to reflect the limited coastal
+exposure in the national index.
 
-## Final result sanity check
+## Result sanity check
 
-The final notebook and presentation show:
-
-```text
-BACI min:  -1.462
-BACI max:   2.203
-BACI mean:  0.274
-BACI std:   0.584
-BACI NaNs:  0
-```
+The CLI writes a compact reproducibility fingerprint to
+`outputs/BACI_fingerprint.json` when the composite is rebuilt. Regenerate this
+fingerprint after any methodology, weighting, or input-data change.
 
 ## Repository layout
 
@@ -121,9 +118,11 @@ The data are used to derive climate components for:
 
 - precipitation
 - temperature extremes
-- drought
 - wind
 - sea level
+
+Drought is retained as a diagnostic component in the exploratory analysis, but
+is excluded from the final BACI composite.
 
 **Data Quality**
 
@@ -158,7 +157,6 @@ Expected component files:
 precipitation_index.nc
 t90_index.nc
 t10_index.nc
-drought_index.nc
 wind_index.nc
 sealevel_index.nc
 ```

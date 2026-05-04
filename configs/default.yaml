@@ -13,14 +13,12 @@ components:
   precipitation: "precipitation_index.nc"
   t90: "t90_index.nc"
   t10: "t10_index.nc"
-  drought: "drought_index.nc"
   wind: "wind_index.nc"
   sealevel: "sealevel_index.nc"
 
 weights:
-  sealevel: 1.0
+  sealevel: 0.35
 
 options:
-  drought_is_spi: false
   make_decadal_png: true
   require_no_missing: true

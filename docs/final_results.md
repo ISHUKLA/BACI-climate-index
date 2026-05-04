@@ -1,6 +1,14 @@
-# Final Results Reference
+# Results Reference
 
-The final results are taken from the Keynote deck:
+The values below came from the earlier six-component calibration preserved for
+provenance. They should be regenerated before publication under the current
+five-component methodology:
+
+```text
+BACI = (t90 - t10 + precipitation + wind + 0.35 * sealevel) / 5
+```
+
+The earlier results were taken from the Keynote deck:
 
 ```text
 Actuarial index calibration - Open source Belgian data.key
