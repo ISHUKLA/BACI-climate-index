@@ -82,18 +82,6 @@ Primary data sources:
 - Permanent Service for Mean Sea Level data:
   https://psmsl.org/data/obtaining/
 
-The prepared input bundle used for this calibration is stored here:
-
-https://drive.google.com/drive/folders/1felOqtKFJkbyaA68T0-ZnsR2uYJl6R5o
-
-It contains:
-
-```text
-era5_land_data/       Monthly ERA5-Land GRIB files, e.g. era5_land_2024_12.grib
-PSMSL/                Permanent Service for Mean Sea Level data, rlr_monthly.zip
-documentation_aci.pdf Supporting project documentation
-```
-
 Expected component files:
 
 ```text
