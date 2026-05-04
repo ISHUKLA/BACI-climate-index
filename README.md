@@ -43,13 +43,20 @@ tests/                    Unit tests for core BACI logic
 
 ## Quick start
 
-Create and activate an environment, then install the project:
+Create and activate an environment, then install the project. With `venv`:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip
 python -m pip install -e ".[dev]"
+```
+
+Or with Conda/Mamba:
+
+```bash
+mamba env create -f environment.yml
+conda activate baci-climate-index
 ```
 
 Build the composite from the configured component files:
@@ -68,6 +75,7 @@ Run tests:
 
 ```bash
 pytest
+ruff check .
 ```
 
 ## Data
@@ -159,3 +167,16 @@ sealevel_index.nc
 
 The final results correspond to `notebooks/index_VF.ipynb` and the Keynote deck
 `Actuarial index calibration - Open source Belgian data.key`.
+
+## Citation and reuse
+
+This repository is released under the MIT License. Citation metadata is provided
+in `CITATION.cff`, which GitHub can render as a suggested citation.
+
+For an archived, citable release:
+
+1. Create a GitHub release from a version tag, for example `v0.1.0`.
+2. Enable the repository in Zenodo's GitHub integration before publishing the
+   release.
+3. After Zenodo archives the release, copy the DOI into this README and update
+   `CITATION.cff` with the DOI.

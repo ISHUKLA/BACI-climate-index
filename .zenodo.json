@@ -1,0 +1,18 @@
+{
+  "title": "BACI Climate Index",
+  "upload_type": "software",
+  "description": "Reproducible Python code for building the Belgian Actuarial Climate Index from open climate data.",
+  "creators": [
+    {
+      "name": "Roland, Coralie"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "climate-index",
+    "actuarial-science",
+    "Belgium",
+    "reproducible-research"
+  ],
+  "access_right": "open"
+}
