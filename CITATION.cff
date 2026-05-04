@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "BACI Climate Index"
+type: software
+authors:
+  - family-names: Roland
+    given-names: Coralie
+abstract: "Reproducible Python code for building the Belgian Actuarial Climate Index from open climate data."
+repository-code: "https://github.com/ISHUKLA/BACI-climate-index"
+license: MIT
+version: 0.1.0
+keywords:
+  - climate-index
+  - actuarial-science
+  - Belgium
+  - reproducible-research

@@ -32,3 +32,6 @@ Before making the repository public:
    ```
 
 7. Add a license before publication if you want others to reuse the code.
+8. Confirm that `CITATION.cff` renders correctly on GitHub.
+9. Confirm that GitHub Actions passes on Python 3.10, 3.11, and 3.12.
+10. Create a GitHub release from a version tag, then archive it with Zenodo.
