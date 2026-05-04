@@ -75,7 +75,14 @@ pytest
 Large raw data and generated NetCDF files are intentionally excluded from Git.
 Set the paths in `configs/default.yaml` to point at your local data directory.
 
-The source dataset used for the final calibration is stored here:
+Primary data sources:
+
+- ERA5-Land reanalysis from the Copernicus Climate Data Store:
+  https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land?tab=overview
+- Permanent Service for Mean Sea Level data:
+  https://psmsl.org/data/obtaining/
+
+The prepared input bundle used for this calibration is stored here:
 
 https://drive.google.com/drive/folders/1felOqtKFJkbyaA68T0-ZnsR2uYJl6R5o
 

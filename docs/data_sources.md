@@ -1,10 +1,25 @@
 # Data Sources
 
-The final calibration uses the dataset folder:
+The final calibration uses open climate data from two primary sources.
+
+## Primary Sources
+
+ERA5-Land reanalysis is available from the Copernicus Climate Data Store:
+
+https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land?tab=overview
+
+Permanent Service for Mean Sea Level data is available from PSMSL:
+
+https://psmsl.org/data/obtaining/
+
+## Prepared Input Bundle
+
+For reproducibility of this project, the prepared input bundle used during
+calibration is stored in this Google Drive folder:
 
 https://drive.google.com/drive/folders/1felOqtKFJkbyaA68T0-ZnsR2uYJl6R5o
 
-## Folder Contents
+### Folder Contents
 
 ```text
 era5_land_data/
@@ -12,7 +27,7 @@ PSMSL/
 documentation_aci.pdf
 ```
 
-## ERA5-Land
+## ERA5-Land Usage
 
 The `era5_land_data` folder contains monthly GRIB files following this naming
 pattern:
@@ -21,10 +36,10 @@ pattern:
 era5_land_YYYY_MM.grib
 ```
 
-These files are used upstream to derive the precipitation, temperature, drought,
-and wind component indices.
+These files are derived from ERA5-Land and are used upstream to derive the
+precipitation, temperature, drought, and wind component indices.
 
-## PSMSL
+## PSMSL Usage
 
 The `PSMSL` folder contains:
 
@@ -32,7 +47,8 @@ The `PSMSL` folder contains:
 rlr_monthly.zip
 ```
 
-This archive is used upstream to derive the sea-level component index.
+This archive is derived from PSMSL monthly revised local reference data and is
+used upstream to derive the sea-level component index.
 
 ## Repository Policy
 
