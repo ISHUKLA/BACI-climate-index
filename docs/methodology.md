@@ -25,6 +25,17 @@ The `t10` term is subtracted so that decreasing cold-tail values contribute to
 an increasing climate-risk signal. Precipitation, hot extremes, wind, and sea
 level are added so that positive anomalies increase the index.
 
+Wind is retained in the production BACI despite the older slide-14 statement
+that it was dropped. The retained-code decision is supported by the same
+validation logic used for the drought exclusion: wind has a contemporaneous
+component-BACI correlation of `0.478`, passes the AR(1)-adjusted FDR lag screen
+at lag 0 with `p = 0.000`, and represents an ACI/FACI climate dimension that is
+not redundant with drought. Dropping wind would remove a statistically visible
+hazard signal and would leave the production formula inconsistent with the
+validated five-dimension composite. The current methodology therefore treats
+the slide-14 dropped-wind text as superseded by the retained production
+specification.
+
 Drought is excluded from the final BACI after validation showed weak marginal
 contribution in Belgium. It can remain in exploratory notebooks or diagnostics,
 but the production composite ignores drought even if a drought column is present

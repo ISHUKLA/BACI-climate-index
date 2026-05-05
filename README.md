@@ -189,9 +189,9 @@ sealevel_index.nc
 ## Provenance
 
 The exploratory notebooks are retained for provenance. The current methodology
-is aligned with the presentation update in `Soutenance CNAM_0109 .pptx`: wind is
-included, drought is excluded from the final BACI, sea level uses `fS = 0.024`,
-and the denominator remains `5`.
+supersedes the older slide-14 statement that wind was dropped: wind is retained,
+drought is excluded from the final BACI, sea level uses `fS = 0.024`, and the
+denominator remains `5`.
 
 ## Citation and reuse
 

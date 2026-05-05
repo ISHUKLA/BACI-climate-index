@@ -84,8 +84,17 @@ not instead of, the Gaussian one- and two-sigma diagnostics.
 
 ## Stationarity Note
 
-The BACI series is standardised against the 1961-1990 reference period, but the
-post-reference climate signal is not assumed to be stationary. Trend and
-stationarity diagnostics should be rerun after rebuilding the current
-five-component BACI so the final results distinguish reference-period
-normalisation from long-run distributional stability.
+Stationarity diagnostics were run on the generated BACI series in
+`/Users/coralieroland/ACI-Python/data/composites/BACI_composite.nc` using
+`stationarity_tests()` with `kpss_regression="c"`:
+
+| Test | Null hypothesis | p-value | Interpretation at alpha = 0.05 |
+| --- | --- | ---: | --- |
+| ADF | Unit root / non-stationary | 0.0261 | Reject non-stationarity |
+| KPSS | Level-stationary | 0.0100 | Reject stationarity |
+
+The KPSS p-value is the lower table bound reported by `statsmodels`; the test
+warning indicates that the actual p-value is smaller. Taken together, ADF and
+KPSS give mixed evidence: the BACI series is standardised against the 1961-1990
+reference period, but the full 1961-2024 series still carries a long-run climate
+signal and should not be treated as distributionally stable.
