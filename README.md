@@ -185,6 +185,42 @@ wind_index.nc
 sealevel_index.nc
 ```
 
+## Limitations
+
+BACI is designed as a transparent national climate-risk indicator, not as a
+full physical attribution model or a local hazard forecast. Results should be
+interpreted with the following limitations in mind:
+
+- **Spatial resolution:** ERA5-Land is provided at about 0.1 degrees
+  (approximately 11 km). This is useful for a national index, but it can smooth
+  local Belgian gradients such as urban heat effects, coastal exposure, and
+  relief/topography.
+- **National aggregation:** The composite summarises Belgium as a whole. It is
+  not intended to replace local or sector-specific analyses for flood risk,
+  coastal infrastructure, agriculture, health, or insurance pricing.
+- **Reference-period dependence:** Component z-scores are standardised against
+  1961-1990. Changing the reference period would change the scale and level of
+  the component indices and the final BACI values.
+- **Data availability and revisions:** The reproducible period starts in 1961
+  and currently runs through 2024 in the production configuration. Updates
+  depend on the release schedules and possible revisions of Copernicus
+  ERA5-Land and PSMSL source data.
+- **Component selection:** Drought is retained for diagnostics and provenance
+  but excluded from the final composite after validation showed limited
+  explanatory contribution for Belgium. This choice should be revisited if new
+  data, methods, or use cases are added.
+- **Sea-level weighting:** The sea-level component is multiplied by `fS = 0.35`
+  to reflect limited national coastal exposure. This is a methodological
+  weighting choice, not a universal estimate of sea-level risk for every region
+  or portfolio.
+- **Composite interpretation:** Because BACI averages standardised component
+  anomalies, a high or low value signals unusual combined climate conditions. It
+  does not identify causality, estimate damages, or measure vulnerability and
+  exposure directly.
+- **Input completeness:** The production workflow requires complete monthly
+  component series. Missing values should be corrected upstream rather than
+  silently dropped from the composite.
+
 ## Provenance
 
 The exploratory notebooks are retained for provenance. The current methodology
