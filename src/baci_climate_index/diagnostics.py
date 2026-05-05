@@ -6,14 +6,36 @@ import pandas as pd
 from scipy import stats
 
 
-def event_frequency(series: pd.Series) -> dict[str, float | int]:
-    """Count moderate and extreme months using one- and two-sigma thresholds."""
+def event_frequency(
+    series: pd.Series,
+    *,
+    use_empirical: bool = True,
+    q_moderate: float = 0.80,
+    q_extreme: float = 0.95,
+) -> dict[str, float | int | str]:
+    """Count moderate and extreme months using empirical or Gaussian thresholds."""
     clean = series.dropna()
-    moderate = ((clean.abs() > 1.0) & (clean.abs() <= 2.0)).sum()
-    extreme = (clean.abs() > 2.0).sum()
+
+    if use_empirical:
+        lo_mod = clean.quantile(1.0 - q_moderate)
+        hi_mod = clean.quantile(q_moderate)
+        lo_ext = clean.quantile(1.0 - q_extreme)
+        hi_ext = clean.quantile(q_extreme)
+
+        extreme_mask = (clean < lo_ext) | (clean > hi_ext)
+        moderate_mask = ((clean < lo_mod) | (clean > hi_mod)) & ~extreme_mask
+        method = f"empirical Q{int(q_moderate * 100)}/Q{int(q_extreme * 100)}"
+    else:
+        moderate_mask = (clean.abs() > 1.0) & (clean.abs() <= 2.0)
+        extreme_mask = clean.abs() > 2.0
+        method = "gaussian 1sigma/2sigma"
+
+    moderate = moderate_mask.sum()
+    extreme = extreme_mask.sum()
     total = len(clean)
 
     return {
+        "method": method,
         "total": int(total),
         "within_1sigma": int((clean.abs() <= 1.0).sum()),
         "moderate": int(moderate),
