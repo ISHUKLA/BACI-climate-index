@@ -13,13 +13,14 @@ builds the BACI composite, and writes final outputs.
 The current public methodology uses five retained components:
 
 ```text
-BACI = (t90 - t10 + precipitation + wind + 0.35 * sealevel) / 5
+BACI = (t90 - t10 + precipitation + wind + fS * sealevel) / 5
+fS = 0.024
 ```
 
 where all five retained inputs are standardised monthly component indices over
 the 1961-1990 reference period. The drought component is excluded from the final
 composite after validation showed limited explanatory contribution for Belgium.
-The sea-level component is weighted by `fS = 0.35` to reflect the limited coastal
+The sea-level component is weighted by `fS = 0.024` to reflect the limited coastal
 exposure in the national index.
 
 ## Current methodology
@@ -34,7 +35,7 @@ transparent index.
 | T10, cold extremes | Yes | Subtracted so that fewer cold extremes increase the climate-risk signal. |
 | Extreme precipitation | Yes | Added to the composite. |
 | Wind | Yes | Added to the composite. |
-| Sea level | Yes | Added with geographic weight `fS = 0.35`. |
+| Sea level | Yes | Added with geographic weight `fS = 0.024`. |
 | Drought | No | Kept for diagnostics/provenance, excluded from the final composite. |
 
 The final denominator is fixed at `5`, matching the five retained BACI
@@ -189,7 +190,7 @@ sealevel_index.nc
 
 The exploratory notebooks are retained for provenance. The current methodology
 is aligned with the presentation update in `Soutenance CNAM_0109 .pptx`: wind is
-included, drought is excluded from the final BACI, sea level uses `fS = 0.35`,
+included, drought is excluded from the final BACI, sea level uses `fS = 0.024`,
 and the denominator remains `5`.
 
 ## Citation and reuse

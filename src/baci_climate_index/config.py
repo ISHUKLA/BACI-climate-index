@@ -8,6 +8,8 @@ from typing import Any
 
 import yaml
 
+from baci_climate_index.composite import DEFAULT_SEALEVEL_FS
+
 
 @dataclass(frozen=True)
 class StudyConfig:
@@ -42,7 +44,7 @@ class BaciConfig:
     study: StudyConfig
     paths: PathConfig
     components: dict[str, str]
-    sealevel_weight: float
+    fs: float
     options: OptionsConfig
 
     @property
@@ -84,7 +86,7 @@ def parse_config(raw: dict[str, Any], base_dir: Path | None = None) -> BaciConfi
         ),
         paths=PathConfig(components_dir=components_dir, output_dir=output_dir),
         components=dict(raw["components"]),
-        sealevel_weight=float(weights_raw.get("sealevel", 0.35)),
+        fs=float(weights_raw.get("sealevel_fs", DEFAULT_SEALEVEL_FS)),
         options=OptionsConfig(
             make_decadal_png=bool(options_raw.get("make_decadal_png", True)),
             require_no_missing=bool(options_raw.get("require_no_missing", True)),

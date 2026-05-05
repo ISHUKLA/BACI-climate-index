@@ -14,7 +14,7 @@ from baci_climate_index.composite import (
     decadal_means,
     reference_summary,
     require_complete_components,
-    sealevel_weight_sensitivity,
+    sealevel_fs_sensitivity,
     summary_stats,
     write_fingerprint,
 )
@@ -65,7 +65,7 @@ def _build_composite(config_path: Path) -> int:
         .to_string()
     )
 
-    baci = build_baci(components, sealevel_weight=config.sealevel_weight)
+    baci = build_baci(components, fs=config.fs)
     frame = components.assign(BACI=baci)
 
     print("\nBACI summary:")
@@ -81,8 +81,8 @@ def _build_composite(config_path: Path) -> int:
     print("\nDecadal BACI means:")
     print(decadal_means(baci).round(3).to_string())
 
-    print("\nSea-level weight sensitivity:")
-    print(sealevel_weight_sensitivity(components, base_weight=config.sealevel_weight).round(3))
+    print("\nSea-level fS sensitivity:")
+    print(sealevel_fs_sensitivity(components, base_fs=config.fs).round(3))
 
     output_nc = config.paths.output_dir / "BACI_composite.nc"
     save_baci_netcdf(baci, output_nc)

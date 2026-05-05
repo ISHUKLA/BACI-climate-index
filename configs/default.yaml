@@ -17,7 +17,7 @@ components:
   sealevel: "sealevel_index.nc"
 
 weights:
-  sealevel: 0.35
+  sealevel_fs: 0.024
 
 options:
   make_decadal_png: true
